@@ -16,7 +16,7 @@ const statisticRoutes = require("./routes/statistic");
 app.use(
   express.json(),
   cors({
-    origin: "https://hkr-beauty-salon.onrender.com/",
+    origin: "*",
     credentials: true,
   }),
   cookieParser()
