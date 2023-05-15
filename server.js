@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
-const cookieParser = require("cookie-parser")
+const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 const userRoutes = require("./routes/users");
@@ -10,12 +10,15 @@ const bookingRoutes = require("./routes/bookings");
 const adminRoutes = require("./routes/admin");
 const employeeRoutes = require("./routes/employees");
 const serviceRoutes = require("./routes/services");
-const authentication = require("./middleware/auth")
-const statisticRoutes = require("./routes/statistic")
+const authentication = require("./middleware/auth");
+const statisticRoutes = require("./routes/statistic");
 
 app.use(
-  express.json(), 
-  cors({ origin: "http://localhost:5173", credentials: true }),
+  express.json(),
+  cors({
+    origin: "https://hkr-beauty-salon.onrender.com/",
+    credentials: true,
+  }),
   cookieParser()
 );
 
@@ -39,6 +42,6 @@ app.get("/", (req, res) => {
   res.json("WELCOME TO THE SALOON");
 });
 
-app.get("/checkAuth", authentication.authenticateUser,(req, res) => {
-  res.json(req.user)
-})
+app.get("/checkAuth", authentication.authenticateUser, (req, res) => {
+  res.json(req.user);
+});
